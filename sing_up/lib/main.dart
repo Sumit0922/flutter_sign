@@ -4,7 +4,7 @@ import 'SplashScreen.dart';
 
 void main() {
   runApp(const SingUp());
-
+ //bubjbjhbjbhjb
 }
 
 class SingUp extends StatelessWidget {
