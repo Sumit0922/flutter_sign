@@ -1,5 +1,7 @@
 
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:sing_up/SplashScreen.dart';
 import 'package:sing_up/function.dart';
 import 'package:sing_up/preference_methods.dart';
 
@@ -207,20 +209,24 @@ return value!.isEmpty ? "Please Enter Password" : null ;
 ),
 
 ElevatedButton(
-onPressed: () {
-
+onPressed: () async{
+var sharedpref = await SharedPreferences.getInstance();
+sharedpref.setBool(SplashScreenState.KEYSIGN, true);
 if(_formKey.currentState!.validate()) {
    PreferenceMethods pm = PreferenceMethods();
    pm.setName(_controller1.text);
-
+   PreferenceMethods ln = PreferenceMethods();
+   ln.setLastName(_controller2.text);
+   PreferenceMethods em = PreferenceMethods();
+   em.setEmail(_controller3.text);
 
 Navigator.push(context, MaterialPageRoute(
 builder: (context) =>
 SecondScreen(
 Screen: _controller1.text,
 Screen1: _controller2.text,
-Screen2: _controller3.text.toString(),
-Screen3: _controller4.text.toString()),)
+Screen2: _controller3.text,
+Screen3: _controller4.text),)
 );
 
 };

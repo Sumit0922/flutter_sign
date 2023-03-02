@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:sing_up/preference_methods.dart';
 
+import 'SignUpScreen.dart';
+
 
 class SecondScreen extends StatefulWidget {
   String Screen, Screen1, Screen2, Screen3;
@@ -13,12 +15,17 @@ class SecondScreen extends StatefulWidget {
 
 class _SecondScreenState extends State<SecondScreen> {
   var Name;
+  var LastName;
+  var Email;
+
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     getMyName();
+    getlastname();
+    getEmail();
 
   }
 
@@ -30,6 +37,21 @@ class _SecondScreenState extends State<SecondScreen> {
     });
   }
 
+  void getlastname() async{
+    PreferenceMethods ln = PreferenceMethods();
+    var some = await ln.getLastName("lastName");
+    setState(() {
+      LastName = some;
+    });
+  }
+  void getEmail() async{
+    PreferenceMethods em = PreferenceMethods();
+    var sEmail = await em.getEmail("Email");
+    setState(() {
+      Email = sEmail;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,6 +60,7 @@ class _SecondScreenState extends State<SecondScreen> {
       ),
       body:
       Column(
+
         children: [
           // Text("Name: $Screen", style: TextStyle(color: Colors.black),),
           // Text("LastName: $Screen1", style: TextStyle(color: Colors.black),),
@@ -45,14 +68,16 @@ class _SecondScreenState extends State<SecondScreen> {
           // Text("Password: $Screen3", style: TextStyle(color: Colors.black),),
 
           Text("Name: $Name", style: TextStyle(color: Colors.black),),
+          Text("LastName: $LastName", style: TextStyle(color: Colors.black),),
+          Text("Email: $Email", style: TextStyle(color: Colors.black),),
 
           Center(
             child: ElevatedButton(
               child: Text('Go Back'),
               onPressed: () {
-                // Navigate back to home screen
-                Navigator.pop(context);
-              },
+                Navigator.pushReplacement(context,
+                    MaterialPageRoute(builder: (context) => SignInScreen(),));
+                },
             ),
 
 

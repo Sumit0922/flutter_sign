@@ -1,23 +1,24 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sing_up/main.dart';
 
 import 'SignUpScreen.dart';
+import 'function.dart';
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
 
   @override
-  State<SplashScreen> createState() => _SplashScreenState();
+  State<SplashScreen> createState() => SplashScreenState();
 }
-class _SplashScreenState extends State<SplashScreen> {
-
+class SplashScreenState extends State<SplashScreen> {
+  static const String KEYSIGN = "Error";
   @override
   void initState() {
     super.initState();
-    Timer(Duration(seconds: 2),(){
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> SignInScreen(),));
-    });
+    Skip();
+
   }
   @override
   Widget build(BuildContext context) {
@@ -30,5 +31,30 @@ class _SplashScreenState extends State<SplashScreen> {
         ),
       ),
     );
+  }
+
+  void Skip() async {
+    var sharedpref = await SharedPreferences.getInstance();
+    var SignUp= sharedpref.getBool(KEYSIGN);
+    Timer(Duration(seconds: 1),(){
+      if(SignUp!=null) {
+        if (SignUp) {
+          Navigator.pushReplacement(context,
+              MaterialPageRoute(builder: (context) => SecondScreen(Screen: '_controller1.text', Screen1: '_controller2.text',
+                Screen2: '_controller3.text', Screen3: '_controller4.text',),));
+        }
+        else {
+          Navigator.pushReplacement(context,
+              MaterialPageRoute(builder: (context) => SignInScreen(),));
+        }
+      }
+        else{
+        Navigator.pushReplacement(context,
+            MaterialPageRoute(builder: (context)=> SignInScreen(),));
+
+
+        }
+    });
+
   }
 }

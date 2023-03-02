@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'SignUpScreen.dart';
 import 'SplashScreen.dart';
+import 'listView.dart';
 
 void main() {
   runApp(const SingUp());
- //bubjbjhbjbhjb
+
 }
 
 class SingUp extends StatelessWidget {
@@ -19,7 +20,7 @@ class SingUp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const SplashScreen(),
+      home: listView(),
 
 
     );
