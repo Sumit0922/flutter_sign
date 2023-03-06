@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:sing_up/gridView.dart';
+import 'Callingapi.dart';
 import 'SignUpScreen.dart';
 import 'SplashScreen.dart';
 import 'listView.dart';
+
 
 void main() {
   runApp(const SingUp());
@@ -20,7 +23,7 @@ class SingUp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: listView(),
+      home: CallingApi(),
 
 
     );

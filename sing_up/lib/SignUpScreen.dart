@@ -3,14 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sing_up/SplashScreen.dart';
 import 'package:sing_up/function.dart';
+import 'package:sing_up/models/sign_in_model.dart';
 import 'package:sing_up/preference_methods.dart';
 
 class SignInScreen extends StatefulWidget {
 
 const SignInScreen({super.key,});
-
-
-
 
 @override
 
@@ -24,7 +22,6 @@ String? gender;
 final _formKey = GlobalKey<FormState>();
 final _selectlist = ["Mr","Miss"];
 var _selectedVal = "Mr";
-
 TextEditingController _controller1 = TextEditingController();
 TextEditingController _controller2 = TextEditingController();
 TextEditingController _controller3 = TextEditingController();
@@ -208,41 +205,39 @@ return value!.isEmpty ? "Please Enter Password" : null ;
 ),
 ),
 
+
 ElevatedButton(
-onPressed: () async{
-var sharedpref = await SharedPreferences.getInstance();
-sharedpref.setBool(SplashScreenState.KEYSIGN, true);
-if(_formKey.currentState!.validate()) {
-   PreferenceMethods pm = PreferenceMethods();
-   pm.setName(_controller1.text);
-   PreferenceMethods ln = PreferenceMethods();
-   ln.setLastName(_controller2.text);
-   PreferenceMethods em = PreferenceMethods();
-   em.setEmail(_controller3.text);
+  style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
+  child: const Text('Submit'),
+  onPressed: () async{
+  var sharedpref = await SharedPreferences.getInstance();
+  sharedpref.setBool(SplashScreenState.KEYSIGN, true);
 
-Navigator.push(context, MaterialPageRoute(
-builder: (context) =>
-SecondScreen(
-Screen: _controller1.text,
-Screen1: _controller2.text,
-Screen2: _controller3.text,
-Screen3: _controller4.text),)
-);
 
-};
-// String text1 = _controller1.text;
-// String text2 = _controller2.text;
-// String text3 = _controller3.text;
-// String text4 = _controller4.text;
-// print('Name: $text1');
-// print('LastName: $text2');
-// print(gender);
-// print('Email: $text3');
-// print('Password: $text4');
 
-},
-style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
-child: const Text('Submit')),
+  if(_formKey.currentState!.validate()) {
+    SignInModel modelVar = SignInModel(name: _controller1.text,lastName :_controller2.text ,
+        email: _controller3.text, password: _controller4.text);
+  PreferenceMethods pm = PreferenceMethods();
+  pm.setName(_controller1.text);
+  PreferenceMethods ln = PreferenceMethods();
+  ln.setLastName(_controller2.text);
+  PreferenceMethods em = PreferenceMethods();
+  em.setEmail(_controller3.text);
+  PreferenceMethods ps = PreferenceMethods();
+  ps.setpassword(_controller4.text);
+
+  Navigator.push(context, MaterialPageRoute(builder: (context) => SecondScreen(modelA: modelVar)));
+
+  }
+
+
+
+  },
+
+  ),
+
+
 ],
 
 ),

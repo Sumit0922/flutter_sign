@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:sing_up/preference_methods.dart';
 
 import 'SignUpScreen.dart';
+import 'models/sign_in_model.dart';
 
 
 class SecondScreen extends StatefulWidget {
-  String Screen, Screen1, Screen2, Screen3;
-
-  SecondScreen({required this.Screen,required this.Screen1,required this.Screen2,required this.Screen3});
+  // String Screen, Screen1, Screen2, Screen3;
+  SignInModel modelA;
+  SecondScreen({required this.modelA});
+  // SecondScreen({required this.Screen,required this.Screen1,required this.Screen2,required this.Screen3});
 
   @override
   State<SecondScreen> createState() => _SecondScreenState();
@@ -17,6 +19,11 @@ class _SecondScreenState extends State<SecondScreen> {
   var Name;
   var LastName;
   var Email;
+  var Password;
+
+
+
+
 
 
   @override
@@ -26,12 +33,13 @@ class _SecondScreenState extends State<SecondScreen> {
     getMyName();
     getlastname();
     getEmail();
+    getpassword();
 
   }
 
   void getMyName() async{
     PreferenceMethods pm = PreferenceMethods();
-      var someName = await pm.getName("Name");
+      var someName = await pm.getName("name");
     setState(() {
       Name = someName;
     });
@@ -51,7 +59,13 @@ class _SecondScreenState extends State<SecondScreen> {
       Email = sEmail;
     });
   }
-
+  void getpassword() async{
+    PreferenceMethods ps = PreferenceMethods();
+    var somed = await ps.getpassword("password");
+    setState(() {
+      Password = somed;
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -66,10 +80,11 @@ class _SecondScreenState extends State<SecondScreen> {
           // Text("LastName: $Screen1", style: TextStyle(color: Colors.black),),
           // Text("Email: $Screen2", style: TextStyle(color: Colors.black),),
           // Text("Password: $Screen3", style: TextStyle(color: Colors.black),),
-
-          Text("Name: $Name", style: TextStyle(color: Colors.black),),
-          Text("LastName: $LastName", style: TextStyle(color: Colors.black),),
-          Text("Email: $Email", style: TextStyle(color: Colors.black),),
+          //
+          Text("Name: ${widget.modelA.name}", style: TextStyle(color: Colors.black),),
+          Text("LastName: ${widget.modelA.lastName}", style: TextStyle(color: Colors.black),),
+          Text("Email: ${widget.modelA.email}", style: TextStyle(color: Colors.black),),
+          Text("Password: ${widget.modelA.password}", style: TextStyle(color: Colors.black),),
 
           Center(
             child: ElevatedButton(

@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sing_up/main.dart';
@@ -40,8 +39,7 @@ class SplashScreenState extends State<SplashScreen> {
       if(SignUp!=null) {
         if (SignUp) {
           Navigator.pushReplacement(context,
-              MaterialPageRoute(builder: (context) => SecondScreen(Screen: '_controller1.text', Screen1: '_controller2.text',
-                Screen2: '_controller3.text', Screen3: '_controller4.text',),));
+              MaterialPageRoute(builder: (context) => SignInScreen()));
         }
         else {
           Navigator.pushReplacement(context,

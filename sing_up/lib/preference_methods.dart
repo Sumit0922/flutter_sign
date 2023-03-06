@@ -30,6 +30,15 @@ class PreferenceMethods{
     var prefs2 = await SharedPreferences.getInstance();
     return prefs2.getString("Email") ?? "ERROR";
   }
+  void setpassword(String password)async{
+    var prefs3 = await SharedPreferences.getInstance();
+    prefs3.setString("Password", password);
+  }
+
+  Future<String> getpassword(String password)async{
+    var prefs3 = await SharedPreferences.getInstance();
+    return prefs3.getString("Password") ?? "ERROR";
+  }
 
 
 }
