@@ -28,6 +28,7 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  provider: ^6.0.5
   http: ^0.13.5
   flutter:
     sdk: flutter
@@ -68,6 +69,7 @@ flutter:
     - assets/image/flutter.image.jpg
     - assets/image/doc.jpg
     - assets/image/AVR.png
+    - assets/image/own.jpg
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

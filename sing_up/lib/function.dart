@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:sing_up/Callingapi.dart';
+import 'package:sing_up/SplashScreen.dart';
+import 'package:sing_up/gridView.dart';
+import 'package:sing_up/listView.dart';
 import 'package:sing_up/preference_methods.dart';
 
 import 'SignUpScreen.dart';
@@ -72,32 +76,96 @@ class _SecondScreenState extends State<SecondScreen> {
       appBar: AppBar(
         title: Text("WELCOME", style: TextStyle(color: Colors.black),),
       ),
-      body:
-      Column(
-
-        children: [
-          // Text("Name: $Screen", style: TextStyle(color: Colors.black),),
-          // Text("LastName: $Screen1", style: TextStyle(color: Colors.black),),
-          // Text("Email: $Screen2", style: TextStyle(color: Colors.black),),
-          // Text("Password: $Screen3", style: TextStyle(color: Colors.black),),
-          //
-          Text("Name: ${widget.modelA.name}", style: TextStyle(color: Colors.black),),
-          Text("LastName: ${widget.modelA.lastName}", style: TextStyle(color: Colors.black),),
-          Text("Email: ${widget.modelA.email}", style: TextStyle(color: Colors.black),),
-          Text("Password: ${widget.modelA.password}", style: TextStyle(color: Colors.black),),
-
-          Center(
-            child: ElevatedButton(
-              child: Text('Go Back'),
-              onPressed: () {
-                Navigator.pushReplacement(context,
-                    MaterialPageRoute(builder: (context) => SignInScreen(),));
-                },
+      //drawer
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: [
+            const DrawerHeader(
+              decoration: BoxDecoration(
+                color: Colors.blue,
+              ),
+              child: Text('Screens',style:TextStyle(fontSize: 50),),
             ),
 
+            ListTile(
+              leading:
+              Icon(
+                Icons.home,
+              ),
+              title: const Text('Calling Api'),
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => CallingApi()));
 
-          ),
-        ],
+                // Navigator.pop(context);
+              },
+            ),ListTile(
+              leading:
+              Icon(
+                Icons.home,
+              ),
+              title: const Text('Grid View'),
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => gridView()));
+
+                // Navigator.pop(context);
+              },
+            ),ListTile(
+              leading:
+              Icon(
+                Icons.home,
+              ),
+              title: const Text('List View'),
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => listView()));
+
+                // Navigator.pop(context);
+              },
+            ),ListTile(
+              leading:
+              Icon(
+                Icons.home,
+              ),
+              title: const Text('Splash Screens'),
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => SplashScreen()));
+
+                // Navigator.pop(context);
+              },
+            ),
+
+          ],
+        ),
+      ),
+      body:
+      Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+
+          children: [
+            // Text("Name: $Screen", style: TextStyle(color: Colors.black),),
+            // Text("LastName: $Screen1", style: TextStyle(color: Colors.black),),
+            // Text("Email: $Screen2", style: TextStyle(color: Colors.black),),
+            // Text("Password: $Screen3", style: TextStyle(color: Colors.black),),
+            //
+            Text("Name: ${widget.modelA.name}", style: TextStyle(color: Colors.black),),
+            Text("LastName: ${widget.modelA.lastName}", style: TextStyle(color: Colors.black),),
+            Text("Email: ${widget.modelA.email}", style: TextStyle(color: Colors.black),),
+            Text("Password: ${widget.modelA.password}", style: TextStyle(color: Colors.black),),
+
+            Center(
+              child: ElevatedButton(
+                child: Text('Go Back'),
+                onPressed: () {
+                  Navigator.pushReplacement(context,
+                      MaterialPageRoute(builder: (context) => SignInScreen(),));
+                  },
+              ),
+
+
+            ),
+          ],
+        ),
       ),
     );
   }

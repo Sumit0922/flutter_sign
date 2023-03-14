@@ -1,6 +1,8 @@
 
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:sing_up/Provider.dart';
 import 'package:sing_up/SplashScreen.dart';
 import 'package:sing_up/function.dart';
 import 'package:sing_up/models/sign_in_model.dart';
@@ -116,6 +118,41 @@ return "Enter Valid LastName";
 },
 
 ),
+  const SizedBox(
+    height: 13,
+  ),
+  ChangeNotifierProvider<ProviderHome>
+    (create: (context)=> ProviderHome(),
+    child: Consumer<ProviderHome>(
+      builder: (context,provider,child){
+        return Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+
+            Text(provider.eligibilityMessage.toString(),style: TextStyle(color:
+            (provider.isEligible==true)? Colors.green : Colors.red,),),
+          TextFormField(
+          keyboardType: TextInputType.number,
+          decoration: const InputDecoration(
+            labelText: "Age",
+            hintText: "Enter Your Age",
+            prefixIcon: Icon(Icons.monitor_weight),
+            border: OutlineInputBorder(),
+          ),
+            onChanged: (val){
+              provider.checkEligiblity(int.parse(val));
+            },
+         ),
+
+          ],
+
+        );
+
+      },
+    ),
+
+  ),
+
 const SizedBox(
 height: 13,
 ),
