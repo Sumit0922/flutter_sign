@@ -33,6 +33,7 @@ bool passToggle = true;
 Widget build(BuildContext context) {
 
 return Scaffold(
+  // drawer: Drawer(),
 // resizeToAvoidBottomInset: false,
 body:
 Stack(
@@ -97,7 +98,7 @@ return "Enter Valid Name";
 }
 // return value!.isEmpty ? "Please Enter Name" : null ;
 },
-),
+ ),
 const SizedBox(
 height: 13,
 ),

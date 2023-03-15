@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:sing_up/Drawer.dart';
 import 'dart:convert';
 
 import 'package:sing_up/Modelbase.dart';
@@ -73,6 +74,7 @@ var res = await Uri.http("https://reqres.in","photos");
       appBar: AppBar(
         title: Text("Api_calling"),
       ),
+      drawer: MyDrawer(),
       body:ListView.builder(itemBuilder: (context,index){
         return SingleChildScrollView(
           child: Container(

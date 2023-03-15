@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sing_up/Drawer.dart';
 class gridView extends StatefulWidget {
   const gridView({Key? key}) : super(key: key);
 
@@ -26,6 +27,7 @@ class gridViewState extends State<gridView> {
       appBar: AppBar(
         title: Text("GridBuilder"),
       ),
+      drawer: MyDrawer(),
       body:  Padding(
         padding: const EdgeInsets.all(8.0),
         child: GridView.count(crossAxisCount: 2,

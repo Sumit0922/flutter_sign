@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sing_up/Callingapi.dart';
+import 'package:sing_up/Drawer.dart';
 import 'package:sing_up/SplashScreen.dart';
 import 'package:sing_up/gridView.dart';
 import 'package:sing_up/listView.dart';
@@ -77,66 +78,7 @@ class _SecondScreenState extends State<SecondScreen> {
         title: Text("WELCOME", style: TextStyle(color: Colors.black),),
       ),
       //drawer
-      drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: [
-            const DrawerHeader(
-              decoration: BoxDecoration(
-                color: Colors.blue,
-              ),
-              child: Text('Screens',style:TextStyle(fontSize: 50),),
-            ),
-
-            ListTile(
-              leading:
-              Icon(
-                Icons.home,
-              ),
-              title: const Text('Calling Api'),
-              onTap: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => CallingApi()));
-
-                // Navigator.pop(context);
-              },
-            ),ListTile(
-              leading:
-              Icon(
-                Icons.home,
-              ),
-              title: const Text('Grid View'),
-              onTap: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => gridView()));
-
-                // Navigator.pop(context);
-              },
-            ),ListTile(
-              leading:
-              Icon(
-                Icons.home,
-              ),
-              title: const Text('List View'),
-              onTap: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => listView()));
-
-                // Navigator.pop(context);
-              },
-            ),ListTile(
-              leading:
-              Icon(
-                Icons.home,
-              ),
-              title: const Text('Splash Screens'),
-              onTap: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => SplashScreen()));
-
-                // Navigator.pop(context);
-              },
-            ),
-
-          ],
-        ),
-      ),
+      drawer:MyDrawer(),
       body:
       Padding(
         padding: const EdgeInsets.all(8.0),

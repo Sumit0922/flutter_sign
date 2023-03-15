@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 class MyUi extends StatefulWidget {
   const MyUi({Key? key}) : super(key: key);
 
@@ -15,30 +17,58 @@ class _MyUiState extends State<MyUi> {
 
   late var radius;
 
+  Widget _chatTile() => Row(
+    mainAxisAlignment: MainAxisAlignment.start,
+    children: [
+      Padding(
+        padding: EdgeInsets.all(10),
+        child: Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(38),
+            color: Colors.white,
+            boxShadow: [
+              BoxShadow(
+                color: Colors.cyan.withOpacity(0.5),
+                spreadRadius: 5,
+                offset: Offset(0, -4),
+                blurRadius: 5,
+                // changes position of shadow
+              ),
+            ],
+          ),
+          width:ScreenUtil().setWidth(220),
+          height:ScreenUtil().setHeight(50),
+        ),
+      ),
+    ],
+  );
+
   @override
   Widget build(BuildContext context) {
     // print(MediaQuery.of(context).size.width * 0.223);
-    radius = ((MediaQuery.of(context).size.width * 0.223).floor()).toDouble();
+    radius =  ScreenUtil().setWidth(70);
     return Scaffold(
       backgroundColor: Color(0xFFE3F3FE),
      body: Stack(
       alignment: Alignment.center,
       children: [
         Padding(
-          padding: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.19),
+          padding: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.15),
           child: Container(
             //height: MediaQuery.of(context).size.height,
             width: MediaQuery.of(context).size.width,
             decoration: BoxDecoration(
               color: Colors.white,
-              borderRadius: BorderRadius.only( topLeft: Radius.circular(20),topRight: Radius.circular(20)),
+              borderRadius: BorderRadius.only(topLeft: Radius.circular(ScreenUtil().setWidth(50)),
+              topRight: Radius.circular(ScreenUtil().setWidth(50)),)
+              // BorderRadius.only( topLeft: Radius.circular(20),topRight: Radius.circular(20)),
             ),
             child: Column(
               children: [
                 Padding(
                   padding: EdgeInsets.only(top: radius + 10, bottom: 10),
                   child: Center(child: Text("Sumit Rahangdale",style:
-                  TextStyle(fontWeight:FontWeight.bold,color: Colors.blueAccent,fontSize:22),)),
+                  TextStyle(fontWeight:FontWeight.bold,color: Colors.blueAccent,fontSize:ScreenUtil().setSp(20)),)),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -46,16 +76,16 @@ class _MyUiState extends State<MyUi> {
                     Column(
                       children: [
                         Container(
-                          width: 80,
-                          height:18,
-                          child: Text("Rating",style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold,color: Colors.blueAccent),
+                          width:ScreenUtil().setWidth(80),
+                          height:ScreenUtil().setHeight(29),
+                          child: Text("Rating",style: TextStyle(fontSize: ScreenUtil().setSp(14), fontWeight: FontWeight.bold,color: Colors.blueAccent),
                           ),
                         ),
                         Container(
-                          width: 80,
-                          height:15,
+                          width:ScreenUtil().setWidth(80),
+                          height:ScreenUtil().setHeight(29),
                           child: Text("50%",
-                            style: TextStyle(fontSize: 16.0),
+                            style: TextStyle(fontSize: ScreenUtil().setSp(14)),
                           ),
                         ),
                       ],
@@ -63,16 +93,16 @@ class _MyUiState extends State<MyUi> {
                     Column(
                       children: [
                         Container(
-                          width: 80,
-                          height:18,
-                          child: Text("Lessons",style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold,color: Colors.blueAccent),
+                          width:ScreenUtil().setWidth(80),
+                          height:ScreenUtil().setHeight(29),
+                          child: Text("Lessons",style: TextStyle(fontSize: ScreenUtil().setSp(14), fontWeight: FontWeight.bold,color: Colors.blueAccent),
                           ),
                         ),
                         Container(
-                          width: 80,
-                          height:15,
+                          width:ScreenUtil().setWidth(80),
+                          height:ScreenUtil().setHeight(29),
                           child: Text("50",
-                            style: TextStyle(fontSize: 16.0),
+                            style: TextStyle(fontSize: ScreenUtil().setSp(14)),
                           ),
                         ),
                       ],
@@ -80,17 +110,17 @@ class _MyUiState extends State<MyUi> {
                     Column(
                       children: [
                         Container(
-                          width: 80,
-                          height:18,
-                          child: Text("Experience",style: TextStyle(fontSize: 16,
+                          width:ScreenUtil().setWidth(80),
+                          height:ScreenUtil().setHeight(29),
+                          child: Text("Experience",style: TextStyle(fontSize: ScreenUtil().setSp(14),
                               fontWeight: FontWeight.bold,color: Colors.blueAccent),
                           ),
                         ),
                         Container(
-                          width: 80,
-                          height:15,
+                          width:ScreenUtil().setWidth(80),
+                          height:ScreenUtil().setHeight(29),
                           child: Text("1 Year",
-                            style: TextStyle(fontSize: 16.0),
+                            style: TextStyle(fontSize: ScreenUtil().setSp(14)),
                           ),
                         ),
                       ],
@@ -98,14 +128,14 @@ class _MyUiState extends State<MyUi> {
                   ],
                 ),
                 SizedBox(
-                  height: 25,
+                  height: 11,
                 ),
                 Padding(
                   padding: const EdgeInsets.only(left: 28),
                   child: Row(
                     children: [
                       Text('Education',
-                        style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold,color: Colors.blueAccent),
+                        style: TextStyle(fontSize: ScreenUtil().setSp(18), fontWeight: FontWeight.bold,color: Colors.blueAccent),
                       ),
 
                     ],
@@ -120,7 +150,7 @@ class _MyUiState extends State<MyUi> {
                     children: [
                       Text('B.Sc,M.Sc,B.Ed in Physics, Biology,Chemistry,'
                           'B.Sc,M.Sc,B.Ed in Physics, Biology,Chemistry',
-                        style: TextStyle(fontSize: 16.0),),
+                        style: TextStyle(fontSize: ScreenUtil().setSp(16)),),
                     ],
                   ),
                 ),
@@ -133,222 +163,22 @@ class _MyUiState extends State<MyUi> {
                        controller: ScrollController(),
                        scrollDirection: Axis.vertical,
                        // shrinkWrap: true,
-                       itemCount: 1,
+                       itemCount: 10,
                        itemBuilder: (BuildContext context, int index) {
-                         return Column(
-                           crossAxisAlignment: CrossAxisAlignment.start,
+                         return Row(
+                           mainAxisAlignment: index%2 == 0 ? MainAxisAlignment.start : MainAxisAlignment.end,
                            children: [
-                             Row(
-                               mainAxisAlignment: MainAxisAlignment.start,
-                               children: [
-                                 Padding(
-                                   padding: EdgeInsets.all(10),
-                                   child: Container(
-                                     decoration: BoxDecoration(
-                                       borderRadius: BorderRadius.circular(38),
-                                       color: Colors.white,
-                                       boxShadow: [
-                                         BoxShadow(
-                                           color: Colors.cyan.withOpacity(0.5),
-                                           spreadRadius: 5,
-                                           blurRadius: 5,
-                                         // changes position of shadow
-                                         ),
-                                       ],
-                                     ),
-                                     width:220,
-                                     height:50,
-                                         ),
-                                   ),
-                               ],
-                             ),
-                             Row(
-                               mainAxisAlignment: MainAxisAlignment.end,
-
-                               children: [
-                                 Padding(
-                                   padding: EdgeInsets.all(8.0),
-                                   child: Container(
-                                     decoration: BoxDecoration(
-                                       borderRadius: BorderRadius.circular(38),
-                                       color: Colors.white,
-                                       boxShadow: [
-                                         BoxShadow(
-                                           color: Colors.cyan.withOpacity(0.5),
-                                           spreadRadius: 5,
-                                           blurRadius: 5,
-                                           // changes position of shadow
-                                         ),
-                                       ],
-                                     ),
-                                     width:220,
-                                     height:50,
-                                   ),
-                                 ),
-                               ],
-                             ),
-                             Row(
-                               mainAxisAlignment: MainAxisAlignment.start,
-
-                               children: [
-                                 Padding(
-                                   padding: EdgeInsets.all(8.0),
-                                   child: Container(
-                                     decoration: BoxDecoration(
-                                       borderRadius: BorderRadius.circular(38),
-                                       color: Colors.white,
-                                       boxShadow: [
-                                         BoxShadow(
-                                           color: Colors.cyan.withOpacity(0.5),
-                                           spreadRadius: 5,
-                                           blurRadius: 5,
-                                           // changes position of shadow
-                                         ),
-                                       ],
-                                     ),
-                                     width:220,
-                                     height:50,
-                                   ),
-                                 ),
-                               ],
-                             ),
-                             Row(
-                               mainAxisAlignment: MainAxisAlignment.end,
-
-                               children: [
-                                 Padding(
-                                   padding: EdgeInsets.all(8.0),
-                                   child: Container(
-                                     decoration: BoxDecoration(
-                                       borderRadius: BorderRadius.circular(38),
-                                       color: Colors.white,
-                                       boxShadow: [
-                                         BoxShadow(
-                                           color: Colors.cyan.withOpacity(0.5),
-                                           spreadRadius: 5,
-                                           blurRadius: 5,
-                                           // changes position of shadow
-                                         ),
-                                       ],
-                                     ),
-                                     width:220,
-                                     height:50,
-                                   ),
-                                 ),
-                               ],
-                             ),
-                             Row(
-                               mainAxisAlignment: MainAxisAlignment.start,
-                               children: [
-                                 Padding(
-                                   padding: EdgeInsets.all(8.0),
-                                   child: Container(
-                                     decoration: BoxDecoration(
-                                       borderRadius: BorderRadius.circular(38),
-                                       color: Colors.white,
-                                       boxShadow: [
-                                         BoxShadow(
-                                           color: Colors.cyan.withOpacity(0.5),
-                                           spreadRadius: 5,
-                                           blurRadius: 5,
-                                           // changes position of shadow
-                                         ),
-                                       ],
-                                     ),
-                                     width:220,
-                                     height:50,
-                                   ),
-                                 ),
-                               ],
-                             ),
-                             Row(
-                               mainAxisAlignment: MainAxisAlignment.end,
-
-                               children: [
-                                 Padding(
-                                   padding: EdgeInsets.all(8.0),
-                                   child: Container(
-                                     decoration: BoxDecoration(
-                                       borderRadius: BorderRadius.circular(38),
-                                       color: Colors.white,
-                                       boxShadow: [
-                                         BoxShadow(
-                                           color: Colors.cyan.withOpacity(0.5),
-                                           spreadRadius: 5,
-                                           blurRadius: 5,
-                                           // changes position of shadow
-                                         ),
-                                       ],
-                                     ),
-                                     width:220,
-                                     height:50,
-                                   ),
-                                 ),
-                               ],
-                             ),
-                             Row(
-                               mainAxisAlignment: MainAxisAlignment.start,
-
-                               children: [
-                                 Padding(
-                                   padding: EdgeInsets.all(8.0),
-                                   child: Container(
-                                     decoration: BoxDecoration(
-                                       borderRadius: BorderRadius.circular(38),
-                                       color: Colors.white,
-                                       boxShadow: [
-                                         BoxShadow(
-                                           color: Colors.cyan.withOpacity(0.5),
-                                           spreadRadius: 5,
-                                           blurRadius: 5,
-                                           // changes position of shadow
-                                         ),
-                                       ],
-                                     ),
-                                     width:220,
-                                     height:50,
-                                   ),
-                                 ),
-                               ],
-                             ),
-                             Row(
-                               mainAxisAlignment: MainAxisAlignment.end,
-
-                               children: [
-                                 Padding(
-                                   padding: EdgeInsets.all(8.0),
-                                   child: Container(
-                                     decoration: BoxDecoration(
-                                       borderRadius: BorderRadius.circular(38),
-                                       color: Colors.white,
-                                       boxShadow: [
-                                         BoxShadow(
-                                           color: Colors.cyan.withOpacity(0.5),
-                                           spreadRadius: 5,
-                                           blurRadius: 5,
-                                           // changes position of shadow
-                                         ),
-                                       ],
-                                     ),
-                                     width:220,
-                                     height:50,
-                                   ),
-                                 ),
-                               ],
-                             ),
-
-
-
+                             _chatTile(),
                            ],
                          );
-
                        },
                      ),
                    ),
                 Container(
-                  width:320,
+                  width: ScreenUtil().setWidth(350),
+                  height: ScreenUtil().setHeight(40),
                   decoration: BoxDecoration(
-                    color: Colors.black38,
+                    color: Colors.white10,
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: Row(
@@ -357,13 +187,14 @@ class _MyUiState extends State<MyUi> {
                         width:10,
                       ),
                       ElevatedButton(
-                          style: ElevatedButton.styleFrom(primary: Colors.grey,
+                          style: ElevatedButton.styleFrom(primary: Colors.white10,
                               shape:RoundedRectangleBorder(
-                                borderRadius: BorderRadius.only(
-                                  topLeft: Radius.circular(20),
-                                  bottomLeft: Radius.circular(20),
-                                  topRight: Radius.circular(-30),
-                                  bottomRight: Radius.circular(-10),)
+                                borderRadius: BorderRadius.circular(ScreenUtil().setSp(25)),
+                                // BorderRadius.only(
+                                //   topLeft: Radius.circular(20),
+                                //   bottomLeft: Radius.circular(20),
+                                //   topRight: Radius.circular(-30),
+                                //   bottomRight: Radius.circular(-10),)
                               ) ),
                           onPressed: (){}, child:Icon(Icons.camera_alt)
                       ),
@@ -374,7 +205,6 @@ class _MyUiState extends State<MyUi> {
                         child: TextField(
                           keyboardType: TextInputType.text,
                           decoration: InputDecoration(
-
                             hintText: "Message",
                             suffixIcon: Icon(Icons.mic_sharp),
 
@@ -394,7 +224,7 @@ class _MyUiState extends State<MyUi> {
         Align(
           alignment: Alignment.topCenter,
           child: Padding(
-            padding: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.09),
+            padding: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.06),
             child: CircleAvatar(
               radius: radius,
               backgroundImage: AssetImage("assets/image/own.jpg"),

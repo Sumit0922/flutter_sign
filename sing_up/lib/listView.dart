@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sing_up/Drawer.dart';
 class listView extends StatefulWidget {
   const listView({Key? key}) : super(key: key);
 
@@ -15,6 +16,7 @@ class listViewState extends State<listView> {
       appBar: AppBar(
         title: Text("ListBuilder"),
       ),
+      drawer: MyDrawer(),
       body:
       Container(
         padding: EdgeInsets.all(10),
