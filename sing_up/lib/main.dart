@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:sing_up/LoginForm.dart';
 import 'package:sing_up/UiPart.dart';
+import 'package:sing_up/datacalling.dart';
 import 'package:sing_up/function.dart';
 import 'package:sing_up/gridView.dart';
 import 'Callingapi.dart';
+
 import 'SignUpScreen.dart';
 import 'SplashScreen.dart';
 import 'listView.dart';
@@ -29,7 +32,7 @@ class SingUp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyUi(),
+      home: LoginPage(),
 
     ),
     );

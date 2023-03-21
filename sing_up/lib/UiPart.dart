@@ -53,7 +53,7 @@ class _MyUiState extends State<MyUi> {
       alignment: Alignment.center,
       children: [
         Padding(
-          padding: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.15),
+            padding: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.15),
           child: Container(
             //height: MediaQuery.of(context).size.height,
             width: MediaQuery.of(context).size.width,
