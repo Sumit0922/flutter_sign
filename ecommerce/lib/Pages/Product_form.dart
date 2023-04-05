@@ -1,8 +1,8 @@
-import 'package:ecommerce/ApiCalling.dart';
-import 'package:ecommerce/ModelUse.dart';
+import 'package:ecommerce/ApiCall/ApiCalling.dart';
+import 'package:ecommerce/model/ModelUse.dart';
 import 'package:flutter/material.dart';
-import 'Image Picker.dart';
-import 'ImageUpload.dart';
+import '../model/Image Picker.dart';
+import '../ApiCall/ImageUpload.dart';
 class ProductForm extends StatefulWidget {
   const ProductForm({Key? key,}) : super(key: key);
   @override

@@ -1,7 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'ImageUpload.dart';
+import '../ApiCall/ImageUpload.dart';
 
 class MyImage extends StatefulWidget {
   final Function getApiUrl ;
